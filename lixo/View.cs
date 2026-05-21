@@ -25,5 +25,11 @@ namespace StringGenerator
         {
             Console.WriteLine(answer);
         }
+
+        public void ConsoleWrite()
+        {
+           // Console.WriteLine("Usage: StringGenerator <seed> [length]");
+           Console.WriteLine("Nope");
+        }
     }
 }

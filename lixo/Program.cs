@@ -24,17 +24,19 @@ namespace StringGenerator
     class Program
     {
         static void Main(string[] args)
-        {
+        {/*
             if (args.Length == 0)
             {
-                Console.WriteLine("Usage: StringGenerator <seed> [length]");
+                new View().ConsoleWrite();
                 return;
-            }
+            }*/
 
             int seed = int.Parse(args[0]);
             int length = args.Length > 1 ? int.Parse(args[1]) : 16;
 
             Controller controller = new Controller(seed, length);
+
+            //um Run
             controller.Run();
         }
     }

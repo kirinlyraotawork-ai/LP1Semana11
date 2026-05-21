@@ -1,12 +1,19 @@
 ﻿using System;
+using System.Text;
 
 namespace StringGenerator
 {
-    public class Program
+
+    class Program
     {
-        private static void Main(string[] args)
+
+        static void Main(string[] args)
         {
-            Console.WriteLine("Hello LP!");
+            View view = new();
+            Controller con = new();
+            con.RandomizeGen(args[0], view);
+            
+
         }
     }
 }
