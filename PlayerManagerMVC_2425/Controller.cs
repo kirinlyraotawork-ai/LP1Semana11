@@ -2,6 +2,8 @@ using System.Collections.Generic;
 
 namespace PlayerManagerMVC
 {
+    // Controller in the MVC pattern: handles commands from the view, updates
+    // the player model list, and coordinates sorting and filtering logic.
     public class Controller
     {
         private List<Player> list;
@@ -10,6 +12,7 @@ namespace PlayerManagerMVC
         private IComparer<Player> compareByNameReverse;
         private PlayerOrder playerOrder;
 
+        // Set up the controller with an initial player list and default ordering.
         public Controller(List<Player> list)
         {
             this.list = list;
@@ -19,6 +22,8 @@ namespace PlayerManagerMVC
             playerOrder = PlayerOrder.ByScore;
         }
 
+        // Run the main menu loop, receive user input from the view, and
+        // dispatch actions until the user chooses to exit.
         public void Run(IView view)
         {
             int input;
@@ -58,6 +63,7 @@ namespace PlayerManagerMVC
             while (input != 0);
         }
 
+        // Ask the view for a new player ordering option and validate it.
         private void ChangePlayerOrder()
         {
             do
@@ -77,6 +83,7 @@ namespace PlayerManagerMVC
             while (true);
         }
 
+        // Sort the player list using the currently selected order strategy.
         private void SortPlayers()
         {
             switch (playerOrder)
@@ -93,6 +100,8 @@ namespace PlayerManagerMVC
             }
         }
 
+        // Ask the view for player data, create a new Player model, and add it
+        // to the list.
         private void InsertPlayer()
         {
             // Ask view to give us information for creating a new player
@@ -105,6 +114,8 @@ namespace PlayerManagerMVC
             list.Add(p);
         }
 
+        // Get the minimum score from the view and display only players with a
+        // score greater than that threshold.
         private void ShowPlayersWithScore()
         {
             // Ask view for minimum score
@@ -118,6 +129,8 @@ namespace PlayerManagerMVC
             view.ShowPlayers(players);
         }
 
+        // Return an enumerable sequence of players whose score exceeds the given
+        // minimum.
         private IEnumerable<Player> GetPlayersWithScoreGreaterThan(int minScore)
         {
             foreach (Player p in list)

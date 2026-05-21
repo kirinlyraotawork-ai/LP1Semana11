@@ -2,6 +2,9 @@
 
 namespace PlayerManagerMVC
 {
+    // Application entry point that wires together model, view, and controller.
+    // It creates the initial list of players, the controller, and the UI view,
+    // then starts the MVC application loop.
     public class Program
     {
         private static void Main()

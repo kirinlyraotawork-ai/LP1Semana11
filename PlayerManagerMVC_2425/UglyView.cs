@@ -3,17 +3,22 @@ using System.Collections.Generic;
 
 namespace PlayerManagerMVC
 {
+    // A simple console-based implementation of IView. It handles user input
+    // and output using the console, and displays menus and player lists.
     public class UglyView : IView
     {
         // This view doesn't actually need a reference to the controller,
-        // but generally views will need it
+        // but generally views will need it.
         private readonly Controller controller;
 
+        // Save a reference to the controller in case the view needs it later.
         public UglyView(Controller controller)
         {
             this.controller = controller;
         }
 
+        // Display the main menu and return the numeric choice entered by the
+        // user.
         public int MainMenu(PlayerOrder playerOrder)
         {
             Console.WriteLine("Menu");
@@ -30,6 +35,7 @@ namespace PlayerManagerMVC
             return int.Parse(Console.ReadLine());
         }
 
+        // Ask the user which player ordering should be used and return it.
         public PlayerOrder AskPlayerOrder()
         {
             Console.WriteLine("Player order");
@@ -46,6 +52,7 @@ namespace PlayerManagerMVC
             return Enum.Parse<PlayerOrder>(Console.ReadLine());
         }
 
+        // Inform the user that they entered an invalid menu option.
         public void InvalidOption()
         {
             Console.WriteLine("\nInvalid option! Press any key to continue...");
@@ -53,6 +60,7 @@ namespace PlayerManagerMVC
             Console.WriteLine();
         }
 
+        // Display a sequence of players on the console.
         public void ShowPlayers(IEnumerable<Player> players)
         {
             Console.WriteLine();
@@ -65,6 +73,7 @@ namespace PlayerManagerMVC
             Console.WriteLine();
         }
 
+        // Prompt the user for a new player's name and score.
         public (string, int) AskForPlayer()
         {
             string name;
@@ -82,6 +91,7 @@ namespace PlayerManagerMVC
             return (name, score);
         }
 
+        // Ask the user for the minimum score used to filter player listings.
         public int AskForMinimumScore()
         {
             Console.WriteLine();
