@@ -1,3 +1,4 @@
 <Solution>
   <Project Path="StringGenerator/StringGenerator.csproj" />
+  <Project Path="testeProgramaStor/testeProgramaStor.csproj" />
 </Solution>

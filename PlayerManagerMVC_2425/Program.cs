@@ -18,7 +18,8 @@ namespace PlayerManagerMVC
 
             // Create controller
             Controller controller = new Controller(list);
-
+            
+            //important
             // Create view
             IView view = new UglyView(controller);
 
